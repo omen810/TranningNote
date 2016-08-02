@@ -123,6 +123,27 @@ NLP是神经语言程序学 (Neuro-Linguistic Programming) 的英文缩写。在
 
 或采用离线安装方式：
 
+# HTML5
+
+学习网站
+
+<http://www.w3school.com.cn/>
+
+# JQuery
+
+官网：
+
+- <https://code.jquery.com/>
+- <http://jquery.com/>
+###JQueryMobile
+
+要使用JQueryMobile，一定要在网页中引用对应版本的JQuery，可以从官网的演示实例或文档中看到对应的版本。
+
+```
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+```
 
 
 
