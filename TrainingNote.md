@@ -145,8 +145,75 @@ NLP是神经语言程序学 (Neuro-Linguistic Programming) 的英文缩写。在
 <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 ```
 
+# 2016.08.03：JQuery Mobile
 
+## 把HTML页面打包成为APK
 
+常用的两种方法：
+
+- 用Android Studio
+
+  1.  新建一个工程。
+
+  2.  打开MainActivity.java页面，修改oncreate函数
+
+      ```@SuppressLint(&quot;JavascriptInterface&quot;)
+            public class MainActivity extends Activity {
+
+            	private WebView webView;
+
+            	@Override
+            	protected void onCreate(Bundle savedInstanceState) {
+            		super.onCreate(savedInstanceState);
+            		setContentView(R.layout.activity_main);
+            		
+            		initWebview();
+            	}
+            	
+            	private void initWebview() {
+            		webView = (WebView) findViewById(R.id.webView1);
+            	
+            		// String url = "http://www.baidu.com";
+            		String url = "file:///android_asset/index.html";
+            	
+            		WebSettings webSettings = webView.getSettings();
+            		// 启用javascript
+            		webSettings.setJavaScriptEnabled(true);
+            		// 从assets目录下面的加载html
+            		webView.loadUrl(url);
+            		// web调用Android接口名称
+            		webView.addJavascriptInterface(this, "wst");
+            		// 覆盖WebView默认使用第三方或系统默认浏览器打开网页的行为，使网页用WebView打开
+            		webView.setWebViewClient(new WebViewClient() {
+            			@Override
+            			public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            				// TODO Auto-generated method stub
+            				// 返回值是true的时候控制去WebView打开，为false调用系统浏览器或第三方浏览器
+            				view.loadUrl(url);
+            				return true;
+            			}
+            		});
+            	}
+           } 
+      ```
+
+  3.  新建assets目录，用来存放html页面。右键app->new->folder->assetsfolder。把html页面放入assets目录。
+
+  4.  预览看一下效果，提示wabpage not available错误，那么我们在AndroidManifest.xml文件中添加权限
+
+       <uses-permission android:name="android.permission.INTERNET"/>
+
+  5.  在Android Studio生成APK
+
+      http://blog.csdn.net/sunylat/article/details/9239595
+
+##微信公众平台开发
+
+## 教程
+
+<http://www.cnblogs.com/txw1958/p/wechat-tutorial.html>
+
+https://mp.weixin.qq.com/wiki/home/index.html
 
 
 
